@@ -10,7 +10,7 @@ export default function DashboardCard({ children }) {
       sx={{
         p: 2,
         color: "white",
-        background: "gray",
+        background: "#1C1E21",
       }}
     >
       {children}

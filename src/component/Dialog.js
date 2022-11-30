@@ -18,7 +18,7 @@ export default function Dialog({
       fullWidth
       sx={{
         "& .MuiPaper-root ": {
-          background: "black",
+          background: "#1C1E21",
           color: "white",
           border: "1px solid white",
         },

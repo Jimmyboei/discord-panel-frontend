@@ -9,7 +9,7 @@ export default function App() {
     <Box
       className="App"
       sx={{
-        background: "black",
+        background: "#181818",
         minHeight: "100vh",
       }}
     >
