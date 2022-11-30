@@ -9,16 +9,22 @@ import { sendMessage } from "src/api/message";
 
 export default function SendMessageDialog({
   open = false,
-  onClose = () => {},
+  onClose = () => { },
 }) {
   const [message, setMessage] = useState("");
   const [channelId, setChannelId] = useState("");
 
   const handleSendMessage = () => {
-    sendMessage(message, channelId).then((resp) => {
+    sendMessage({ message, channelId }).then((resp) => {
+      setMessage('');
+      setChannelId('');
       onClose();
     });
   };
+
+
+
+
 
   return (
     <Dialog open={open} onClose={onClose} title="Send a message">

@@ -1,109 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Box, Grid, Button, Typography } from "@mui/material";
 
 import DashboardContainer from "./component/DashboardContainer";
 
 import ChatLogItem from "./component/ChatLogItem";
 
-const mockLogs = [
-  {
-    channelId: 111,
-    date: Date(),
-    message: "1111111111111111111111111111111111111111111111111111111",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "2",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "3",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "4",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "5",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "6",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "4",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "5",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "6",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "4",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "5",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "6",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "4",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "5",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "6",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "6",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "4",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "5",
-  },
-  {
-    channelId: 111,
-    date: Date(),
-    message: "6",
-  },
-];
+
+
+import {
+  getChatLogs
+} from 'src/api/message';
+
+
+
 
 export default function ChatLog() {
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    getChatLogs().then(resp => {
+      setMessages(resp);
+    });
+  }, []);
+
   return (
     <DashboardContainer>
       <Box
@@ -113,8 +32,9 @@ export default function ChatLog() {
         }}
       >
         <Grid container px={2} justifyContent="flex-end" flexDirection="column">
-          {mockLogs.map((item) => (
+          {messages.map((item, key) => (
             <ChatLogItem
+              key={key}
               channelId={item.channelId}
               date={item.date}
               message={item.message}

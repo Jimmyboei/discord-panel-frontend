@@ -19,14 +19,14 @@ export default function ChatLogItem({
         <Grid item flexGrow={1}>
           <Grid container alignItems="baseline">
             <Grid item>
-              <Typography variant="h6"> {channelId} </Typography>
+              <Typography variant="h6">Channel Id: {channelId} </Typography>
             </Grid>
 
             <Grid item ml={2}>
               <Typography variant="p"> {date} </Typography>
             </Grid>
           </Grid>
-          <Box>{message}</Box>
+          <Box>message: {message}</Box>
         </Grid>
       </Grid>
       <hr />
