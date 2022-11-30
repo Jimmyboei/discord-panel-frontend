@@ -19,8 +19,8 @@ export default function ServerAnalytics() {
       <Grid container m={2} spacing={2}>
         <Grid item xs={12} sm={4}>
           <DashboardCard>
-            <Typography variant="h5">Joined Server</Typography>
-            <Typography variant="h3" id="serverNumber"> {servers.joinedServers}</Typography>
+            <Typography variant="h5" id="serverNumber">Joined Server</Typography>
+            <Typography variant="h3"> {servers.joinedServers}</Typography>
           </DashboardCard>
         </Grid>
         <Grid item xs={12} sm={4}>

@@ -35,7 +35,7 @@ export default function Settings() {
         <Textfield value={serverInfo.serverId} disabled />
 
         <Box mt={2}>
-          <Button variant="contained" onClick={handleLogout}>
+          <Button variant="contained" onClick={handleLogout} id="logout">
             Logout
           </Button>
         </Box>
