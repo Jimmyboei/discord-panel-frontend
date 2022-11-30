@@ -1,7 +1,7 @@
 import React from "react";
 import MessageIcon from "@mui/icons-material/Message";
 
-import { Container, Box, Grid, Divider, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 export default function ChatLogItem({
   channelId = "",

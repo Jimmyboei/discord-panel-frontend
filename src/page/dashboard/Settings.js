@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Container, Box, Grid, Button, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DashboardContainer from "./component/DashboardContainer";
 import Textfield from "src/component/Textfield";
 
-import { setCookie, getCookie } from "src/utlis/cookie";
+import { setCookie } from "src/utlis/cookie";
 import { getServerInfo } from 'src/api/message';
 
 
