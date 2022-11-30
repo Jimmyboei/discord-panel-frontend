@@ -5,11 +5,7 @@ import DashboardContainer from "./component/DashboardContainer";
 import Textfield from "src/component/Textfield";
 
 import { setCookie, getCookie } from "src/utlis/cookie";
-
-
-import {
-  getServerInfo
-} from 'src/api/message';
+import { getServerInfo } from 'src/api/message';
 
 
 
@@ -35,7 +31,7 @@ export default function Settings() {
         <Typography> Bot id </Typography>
         <Textfield value={serverInfo.botId} disabled />
 
-        <Typography> server id </Typography>
+        <Typography> Server id </Typography>
         <Textfield value={serverInfo.serverId} disabled />
 
         <Box mt={2}>

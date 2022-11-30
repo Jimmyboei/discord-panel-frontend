@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import _ from 'lodash';
 
 
@@ -23,7 +23,7 @@ export const sendMessage = async (body) => {
 };
 
 export const getServers = async () => {
-  // call API
+  // mockdata for server info
 
 
   return {

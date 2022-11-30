@@ -1,3 +1,4 @@
+// use localstorage to store messages
 
 export const setLocalStorage = (name, value) => {
   const data = JSON.stringify(value);

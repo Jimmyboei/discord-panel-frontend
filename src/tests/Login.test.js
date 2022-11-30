@@ -1,19 +1,19 @@
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
-import { beforeEach } from "vitest";
-import { describe, it, expect } from "vitest";
-import Login from "src/page/login/Login";
+import assert from 'assert';
+import { render } from '@testing-library/react';
 
-describe("Login", () => {
-  beforeEach(() => {
-    render(<Login />);
-  });
+import ChatLogItem from "src/page/dashboard/component/ChatLogItem";
 
-  it("Displays the Header component with the title", () => {
-    expect(screen.getByRole("heading")).toHaveTextContent("Name.tools");
-  });
+describe('ChatLogItem', function () {
+  it('should render ChatLogItem', async function () {
+    const { container } = render(
+      <ChatLogItem
+        channelId={'channelId'}
+        date={'date'}
+        message={'message'}
+      />
+    );
 
-  it("Have links to github and bot tutorial", () => {
-    expect(screen.getByRole("a")).toBeInTheDocument();
+    const h6Node = container.querySelector('#channelId');
+    assert.equal(h6Node.textContent, 'Channel Id: channelId ');
   });
 });
