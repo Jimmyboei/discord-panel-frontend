@@ -11,28 +11,36 @@ import { getCookie } from "src/utlis/cookie";
 import _ from "lodash";
 
 export default function ChatLog() {
+  const [channels, setChannels] = useState([]);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    const loadMessages = async () => {
-      const guilds = await getUserGuilds();
+    // const loadMessages = async () => {
 
-      console.warn("guilds", guilds);
-      const allChannels = await guilds.map(async (guild) => {
-        return await getChannels(guild);
-      }, []);
+    //   console.warn("allChannels", allChannels);
+    // };
+    // loadMessages();
 
-      console.warn("allChannels", allChannels);
-    };
-    loadMessages();
-    // .then((guilds) => {
-    //     guilds.map((guild) => {
-    //       getChannels(guild).then();
-    //     });
-    //     getChatLogs().then((resp) => {
-    //       setMessages(resp);
-    //     });
+    getUserGuilds().then((guilds) => {
+      const getAllChannels = guilds.map(async (guild) => {
+        return getChannels(guild.id);
+      });
+      Promise.all(getAllChannels).then((resp) => {
+        setChannels(_.flatten(resp));
+      });
+    });
   }, []);
+
+  useEffect(() => {
+    if (channels.length === 0) return;
+
+    const getAllMessages = channels.map(async (channel) => {
+      return getChatLogs(channel.id);
+    });
+    Promise.all(getAllMessages).then((resp) => {
+      setMessages(_.flatten(resp));
+    });
+  }, [channels]);
 
   return (
     <DashboardContainer>
@@ -46,9 +54,9 @@ export default function ChatLog() {
           {messages.map((item, key) => (
             <ChatLogItem
               key={key}
-              channelId={item.channelId}
-              date={item.date}
-              message={item.message}
+              channelId={item.channel_id}
+              date={item.timestamp}
+              message={item.content}
             />
           ))}
         </Grid>

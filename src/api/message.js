@@ -9,6 +9,8 @@ export const getUserGuilds = async () => {
   return createInstance()
     .get("/userGuilds")
     .then((resp) => {
+      if (resp.data.error) return [];
+
       return resp.data;
     });
 };
@@ -19,7 +21,7 @@ export const sendMessage = async ({ message, channelId }) => {
       content: message,
     })
     .then((resp) => {
-      return resp;
+      return resp.data;
     });
 };
 
@@ -36,8 +38,8 @@ export const getChannels = async (guildId) => {
   return createInstance()
     .get(`guildChannels/${guildId}`)
     .then((resp) => {
-      console.warn("resp", resp);
-      return resp;
+      if (resp.data.error) return [];
+      return resp.data;
     });
 };
 
@@ -46,8 +48,9 @@ export const getChatLogs = async (channelId) => {
   return createInstance()
     .get(`channelMessages/${channelId}`)
     .then((resp) => {
-      console.warn("resp", resp);
-      return resp;
+      if (resp.data.error) return [];
+      
+      return resp.data;
     });
 };
 
