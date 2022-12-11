@@ -5,6 +5,14 @@ import { createInstance } from "./instance";
 
 import { setLocalStorage, getLocalStorage } from "src/utlis/localStorage";
 
+export const getUserGuilds = async () => {
+  return createInstance()
+    .get("/userGuilds")
+    .then((resp) => {
+      return resp.data;
+    });
+};
+
 export const sendMessage = async ({ message, channelId }) => {
   return createInstance()
     .post(`channelMessages/${channelId}`, {
@@ -24,8 +32,23 @@ export const getServers = async () => {
   };
 };
 
-export const getChatLogs = async () => {
-  return getLocalStorage("messages") || [];
+export const getChannels = async (guildId) => {
+  return createInstance()
+    .get(`guildChannels/${guildId}`)
+    .then((resp) => {
+      console.warn("resp", resp);
+      return resp;
+    });
+};
+
+export const getChatLogs = async (channelId) => {
+  // return getLocalStorage("messages") || [];
+  return createInstance()
+    .get(`channelMessages/${channelId}`)
+    .then((resp) => {
+      console.warn("resp", resp);
+      return resp;
+    });
 };
 
 export const getServerInfo = async () => {

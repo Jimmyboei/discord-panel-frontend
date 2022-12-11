@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Textfield from "src/component/Textfield";
 
-import { loginWithBotToken } from "src/api/auth";
+import { getCurrentUser } from "src/api/auth";
 
 import { setCookie, getCookie } from "src/utlis/cookie";
 
@@ -15,9 +15,8 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   const handleSend = () => {
-    loginWithBotToken(botToken)
+    getCurrentUser(botToken)
       .then((resp) => {
-        console.warn("loginWithBotToken", resp);
         setErrorMessage("");
         setCookie("token", resp);
         navigate("/dashboard/fun-stuff");
