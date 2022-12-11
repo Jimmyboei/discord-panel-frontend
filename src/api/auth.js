@@ -1,16 +1,18 @@
+import { createInstance } from "./instance";
+import axios from "axios";
 
-// currently using mock token for login
-// the token is hello123
-
-const loginWithBotTokenData = {
-  "token": "validToken"
-};
+const baseURL = "http://localhost:3000/api/";
 
 export const loginWithBotToken = async (token) => {
-
-  if (token === 'hello123') {
-    return loginWithBotTokenData;
-  }
-
-  throw new Error(`Invalid login token`);
-};;
+  return axios({
+    baseURL,
+    url: "/userGuilds",
+    method: "get",
+    headers: { Authorization: `Bot ${token}` },
+  }).then((resp) => {
+    if (resp.data.message) {
+      throw new Error(`Invalid login token`);
+    }
+    return token;
+  });
+};

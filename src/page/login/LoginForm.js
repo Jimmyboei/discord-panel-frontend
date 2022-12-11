@@ -15,22 +15,23 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   const handleSend = () => {
-    loginWithBotToken(botToken).then((resp) => {
-      console.warn("loginWithBotToken", resp);
-      setErrorMessage('');
-      setCookie("token", resp);
-      navigate("/dashboard/fun-stuff");
-    }).catch(e => {
-      setErrorMessage(e.message);
-    });
+    loginWithBotToken(botToken)
+      .then((resp) => {
+        console.warn("loginWithBotToken", resp);
+        setErrorMessage("");
+        setCookie("token", resp);
+        navigate("/dashboard/fun-stuff");
+      })
+      .catch((e) => {
+        console.warn(e);
+        setErrorMessage(e.message);
+      });
   };
 
   return (
     <Box width="500px" maxWidth="100vw" mt={6}>
       <Box my={1}>
-        {errorMessage &&
-          <Alert severity="error">{errorMessage}</Alert>
-        }
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
       </Box>
 
       <Typography variant="p"> Login with bot token</Typography>
@@ -58,13 +59,12 @@ export default function LoginForm() {
       <Typography variant="p" color="primary">
         <a
           href="https://discordjs.guide/creating-your-bot/#using-config-json"
-          target="_blank" rel="noreferrer"
+          target="_blank"
+          rel="noreferrer"
         >
           how to create a bot token?
         </a>
       </Typography>
-
-
     </Box>
   );
 }
