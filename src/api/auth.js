@@ -1,6 +1,4 @@
-import { createInstance } from "./instance";
 import axios from "axios";
-
 import { setCookie, getCookie } from "src/utlis/cookie";
 
 const baseURL = "http://localhost:3000/api/";

@@ -1,6 +1,4 @@
 import axios from "axios";
-import _ from "lodash";
-
 import { getCookie } from "src/utlis/cookie";
 
 const baseURL = "http://localhost:3000/api/";

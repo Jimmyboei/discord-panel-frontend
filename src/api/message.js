@@ -1,9 +1,5 @@
-// import axios from "axios";
-import _ from "lodash";
-
 import { createInstance } from "./instance";
 
-import { setLocalStorage, getLocalStorage } from "src/utlis/localStorage";
 
 export const getUserGuilds = async () => {
   return createInstance()
@@ -44,7 +40,6 @@ export const getChannels = async (guildId) => {
 };
 
 export const getChatLogs = async (channelId) => {
-  // return getLocalStorage("messages") || [];
   return createInstance()
     .get(`channelMessages/${channelId}`)
     .then((resp) => {
