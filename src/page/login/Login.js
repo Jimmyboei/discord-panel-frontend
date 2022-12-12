@@ -26,7 +26,7 @@ export default function Login() {
       <Grid container minHeight="80vh">
         <Grid item margin="auto">
           <Typography variant="h2" textAlign="center">
-            NAME.TOOLS
+            DISCORD.TOOLS
           </Typography>
 
           <LoginForm />
