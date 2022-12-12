@@ -26,10 +26,10 @@ export default function Settings() {
   return (
     <DashboardContainer>
       <Box width={400} ml={2}>
-        <Typography> Bot id </Typography>
+        <Typography> Bot ID </Typography>
         <Textfield value={serverInfo.id} disabled />
 
-        <Typography> Botname </Typography>
+        <Typography> Bot Name </Typography>
         <Textfield value={serverInfo.username} disabled />
         <Box mt={2}>
           <Button
