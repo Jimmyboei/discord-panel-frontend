@@ -5,9 +5,8 @@ import DashboardContainer from "./component/DashboardContainer";
 import Textfield from "src/component/Textfield";
 
 import { setCookie } from "src/utlis/cookie";
-import { getServerInfo } from 'src/api/message';
 
-
+import { getCurrentUser } from "src/api/auth";
 
 export default function Settings() {
   const navigate = useNavigate();
@@ -18,9 +17,8 @@ export default function Settings() {
     navigate("/login");
   };
 
-
   useEffect(() => {
-    getServerInfo().then(resp => {
+    getCurrentUser().then((resp) => {
       setServerInfo(resp);
     });
   }, []);
@@ -29,11 +27,20 @@ export default function Settings() {
     <DashboardContainer>
       <Box width={400} ml={2}>
         <Typography> Bot id </Typography>
-        <Textfield value={serverInfo.botId} disabled />
+        <Textfield value={serverInfo.id} disabled />
 
-        <Typography> Server id </Typography>
-        <Textfield value={serverInfo.serverId} disabled />
-
+        <Typography> Botname </Typography>
+        <Textfield value={serverInfo.username} disabled />
+        <Box mt={2}>
+          <Button
+            variant="outlined"
+            href={`https://discord.com/oauth2/authorize?client_id=${serverInfo.id}&scope=bot&permissions=1`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Add bot to your server
+          </Button>
+        </Box>
         <Box mt={2}>
           <Button variant="contained" onClick={handleLogout} id="logout">
             Logout

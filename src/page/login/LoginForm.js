@@ -6,8 +6,6 @@ import Textfield from "src/component/Textfield";
 
 import { getCurrentUser } from "src/api/auth";
 
-import { setCookie, getCookie } from "src/utlis/cookie";
-
 export default function LoginForm() {
   const [botToken, setBotToken] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -18,7 +16,7 @@ export default function LoginForm() {
     getCurrentUser(botToken)
       .then((resp) => {
         setErrorMessage("");
-        setCookie("token", resp);
+        // setCookie("token", resp);
         navigate("/dashboard/fun-stuff");
       })
       .catch((e) => {
