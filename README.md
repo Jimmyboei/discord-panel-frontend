@@ -3,7 +3,7 @@
 This is the React App for the Discord.Tools 
 The Discord.Tools allows users to get better use of their discord bots, such as send message as the bot, create polls or get a clear view of channels and servers that host the bot.
 
-The deployed netlify site can be found [here](https://kaiqi-discord-panel.netlify.app/login)
+The deployed netlify site can be found [here](https://kaiqi-discord-panel.netlify.app/)
 
 To use the app, download this [repo](https://github.com/Jimmyboei/discord-panel-backend) and run the server in the localhost.
 
